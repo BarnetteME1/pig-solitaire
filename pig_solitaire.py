@@ -1,3 +1,5 @@
+import random
+
 class Dice:
 
     def roll(self):
@@ -87,7 +89,7 @@ class Player:
 
 class Game:
 
-    def __init__(self, round = 7):
+    def __init__(self):
         self.p1 = Player()
         self.p2 = Opponent()
         self.round_count = 0
@@ -104,6 +106,10 @@ class Game:
         self.p2_turn()
 
     def full_game(self):
-        while self.round_count <= 7:
+        while self.round_count < 7:
             self.play_round()
             self.round_count += 1
+        if self.p1.total_score > self.p2.total_score:
+            return "YOU WIN! Final score is {}, to {}.".format(self.p1.total_score, self.p2.total_score)
+        else:
+            return "YOU LOSE! Final score is {}, to {}.".format(self.p1.total_score, self.p2.total_score)
