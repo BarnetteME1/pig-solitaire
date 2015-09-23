@@ -70,7 +70,7 @@ class Player:
             self.count = 0
             return self.total_score
         else:
-            response = input("Do you want to roll or hold? (Roll/Hold)".lower())
+            response = input("\nDo you want to roll or hold? (Roll/Hold)".lower())
             if response == 'hold':
                 print("You hold")
                 self.total_score += self.score
@@ -84,3 +84,26 @@ class Player:
                 print("your total score: ", self.total_score)
                 self.count += 1
                 return self.roll_or_hold()
+
+class Game:
+
+    def __init__(self, round = 7):
+        self.p1 = Player()
+        self.p2 = Opponent()
+        self.round_count = 0
+
+
+    def p1_turn(self):
+        self.p1.roll_or_hold()
+
+    def p2_turn(self):
+        self.p2.roll_or_hold()
+
+    def play_round(self):
+        self.p1_turn()
+        self.p2_turn()
+
+    def full_game(self):
+        while self.round <= 7:
+            self.play_round
+            self.round_count += 1
