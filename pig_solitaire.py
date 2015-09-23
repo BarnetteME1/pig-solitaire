@@ -64,7 +64,12 @@ class Player:
         return self.score
 
     def roll_or_hold(self):
-        if self.count is not 0 and self.score == 0:
+        if self.score == 0 and self.count > 0:
+            print(self.count)
+            print("You bust")
+            self.count = 0
+            return self.total_score
+        else:
             response = input("Do you want to roll or hold? (Roll/Hold)".lower())
             if response == 'hold':
                 print("You hold")
@@ -79,8 +84,3 @@ class Player:
                 print("your total score: ", self.total_score)
                 self.count += 1
                 return self.roll_or_hold()
-        else:
-            print(self.count)
-            print("You bust")
-            self.count = 0
-            return self.total_score
