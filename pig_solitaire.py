@@ -104,6 +104,6 @@ class Game:
         self.p2_turn()
 
     def full_game(self):
-        while self.round <= 7:
-            self.play_round
+        while self.round_count <= 7:
+            self.play_round()
             self.round_count += 1
